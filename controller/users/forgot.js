@@ -1,6 +1,8 @@
-const User = require("../models/User");
+const User = require("../../models/User");
 const crypto = require("crypto");
 const nodemailer = require('nodemailer')
+// let aws = require("@aws-sdk/client-ses");
+// let { defaultProvider } = require("@aws-sdk/credential-provider-node");
 // const sendgridTransport = require('nodemailer-sendgrid-transport')
 
 var transporter = nodemailer.createTransport({
@@ -11,6 +13,16 @@ var transporter = nodemailer.createTransport({
     }
 });
   
+// const ses = new aws.SES({
+//     apiVersion: "2010-12-01",
+//     region: "us-east-1",
+//     defaultProvider,
+//   });
+  
+//   // create Nodemailer SES transporter
+// let transporter = nodemailer.createTransport({
+//     SES: { ses, aws },
+//   });
 
 const forget = async (req,res)=>{
     crypto.randomBytes(32,(err,buffer)=>{
@@ -33,7 +45,7 @@ const forget = async (req,res)=>{
                     subject:"password reset",
                     html:`
                     <p>You requested for password reset</p>
-                    <h5>click in this <a href="${host}/new-password/${token}">link</a> to reset password</h5>
+                    <h5>click in this <a href="${host}/api/auth/new-password/${token}">link</a> to reset password</h5>
                     `
                 })
                 res.json({message:"check your email"})

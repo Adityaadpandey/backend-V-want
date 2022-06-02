@@ -1,19 +1,19 @@
 //  importing the modules for the routes
 const express = require("express");
 const router = express.Router();
-const crypto = require('crypto')
+// const crypto = require('crypto')
 const {body} = require("express-validator");
 var fetchUser = require("../middleware/fetchUser");
-const User = require("../models/User");
+// const User = require("../models/User");
 
-const jwt = require('jsonwebtoken')
+// const jwt = require('jsonwebtoken')
 
 // requirement of the controllers
-const loged = require("../controller/signin");
-const login = require("../controller/login");
-const id = require("../controller/id");
-const forget = require("../controller/forgot");
-const newpass = require("../controller/n-password");
+const loged = require("../controller/users/signin");
+const login = require("../controller/users/login");
+const id = require("../controller/users/id");
+const forget = require("../controller/users/forgot");
+const newpass = require("../controller/users/n-password");
 
 
 

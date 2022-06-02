@@ -10,11 +10,12 @@ app.use(cors());
 app.use(BodyParser.json());
 connectToMongo();
 
-app.get('/', (req, res) => { 
+app.get('/', (req, res) => {
     res.send('Hello World');
 });
-app.use('/api/auth',require('./routes/auth'))
+app.use('/api/auth', require('./routes/auth'))
+app.use('/api/post', require('./routes/post'))
 
-app.listen(PORT,() => {
+app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 })
