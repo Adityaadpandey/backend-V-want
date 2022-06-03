@@ -19,4 +19,6 @@ router.delete("/delete/:id", fetchUser, del);
 
 router.get("/sum/:id", sum);
 
+router.get("/fetch", fetchUser);
+
 module.exports = router;

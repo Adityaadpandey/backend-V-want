@@ -1,7 +1,9 @@
 const Post = require("../../models/Post");
 
 const update = async (req, res) => { 
-    const {title, desc, dt1, dt2} = req.body;
+    const { title, desc, dt1, dt2 } = req.body;
+    const total = dt1 + dt2;
+    // const data = req.user;
     try {
         // Create a newNote object
         const newNote = {};
@@ -9,6 +11,7 @@ const update = async (req, res) => {
         if (dt1) { newNote.dt1 = dt1 };
         if (dt2) { newNote.dt2 = dt2 };
         if (desc) { newNote.desc = desc };
+        if (total) { newNote.total = total };
 
         // Find the note to be updated and update it
         let note = await Post.findById(req.params.id);
@@ -19,6 +22,7 @@ const update = async (req, res) => {
         // }
         note = await Post.findByIdAndUpdate(req.params.id, { $set: newNote }, { new: true })
         res.json({ note });
+        // res.json({data:req.user});
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Internal Server Error");
