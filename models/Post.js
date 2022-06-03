@@ -21,6 +21,10 @@ const PostSchema = new Schema({
     dt2: {
         type: Number,
         default: 0,
+    },
+    total: {
+        type: Number,
+        default: 0,
     }
 });
 

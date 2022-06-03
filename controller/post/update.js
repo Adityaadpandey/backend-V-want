@@ -1,11 +1,13 @@
 const Post = require("../../models/Post");
 
 const update = async (req, res) => { 
-    const {title, desc} = req.body;
+    const {title, desc, dt1, dt2} = req.body;
     try {
         // Create a newNote object
         const newNote = {};
         if (title) { newNote.title = title };
+        if (dt1) { newNote.dt1 = dt1 };
+        if (dt2) { newNote.dt2 = dt2 };
         if (desc) { newNote.desc = desc };
 
         // Find the note to be updated and update it
