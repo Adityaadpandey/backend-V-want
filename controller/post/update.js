@@ -1,7 +1,7 @@
 const Post = require("../../models/Post");
 
-const update = async (req, res) => { 
-    const { title, desc, dt1, dt2 } = req.body;
+const update = async (req, res) => {
+    const { title, desc, dt1, dt2, title1, title2 } = req.body;
     const total = dt1 + dt2;
     // const data = req.user;
     try {
@@ -11,6 +11,8 @@ const update = async (req, res) => {
         if (dt1) { newNote.dt1 = dt1 };
         if (dt2) { newNote.dt2 = dt2 };
         if (desc) { newNote.desc = desc };
+        if (title1) { newNote.title1 = title1 };
+        if (title2) { newNote.title2 = title2 };
         if (total) { newNote.total = total };
 
         // Find the note to be updated and update it

@@ -14,9 +14,17 @@ const PostSchema = new Schema({
         type: Date,
         default: Date.now,
     },
+    title1: {
+        type: 'string',
+        required: true,
+    },
     dt1: {
         type: Number,
         default: 0,
+    },
+    title2: {
+        type: 'string',
+        required: true,
     },
     dt2: {
         type: Number,
