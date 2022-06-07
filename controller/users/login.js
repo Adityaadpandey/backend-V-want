@@ -28,7 +28,8 @@ const login = async (req, res) => {
       const user1 = await User.findById(userId).select("-password");
       const authtoken = jwt.sign(data, JWT_SECRECT);
       // console.log(jwtData)
-      res.json({ authtoken,img:user1.img });
+      var success = true;
+      res.json({ success,authtoken,img:user1.img });
     } catch (error) {
       console.log(error.message);
       res.status(500).send("Enternal sever error");
