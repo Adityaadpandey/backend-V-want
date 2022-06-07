@@ -35,7 +35,7 @@ const loged = async (req, res) => {
     const token = jwt.sign(data, JWT_SECRECT);
     let success = true
     // sending the token
-    res.json({ success, token, img }).status(200);
+    res.json({ success, token, img, name: req.body.name}).status(200);
   } catch (error) {
     console.log(error);
   }
