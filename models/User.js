@@ -7,6 +7,10 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
+    img: {
+        type: 'string',
+        required: true,
+    },
     email: {
         type: 'string',
         required : true,

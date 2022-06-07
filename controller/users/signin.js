@@ -23,7 +23,9 @@ const loged = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     nPass = await bcrypt.hash(password, salt);
     //  adding to the database
-    user = await User.create({ name: req.body.name, email: req.body.email, password: nPass });
+    var seed = Math.floor(Math.random() * 5000)
+    var img = `https://avatars.dicebear.com/api/human/${seed}.svg`;
+    user = await User.create({ name: req.body.name, email: req.body.email, password: nPass, img: img });
     // to generate token
     const data = {
       user: {
