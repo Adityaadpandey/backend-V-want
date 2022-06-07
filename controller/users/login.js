@@ -4,23 +4,35 @@ const jwt = require("jsonwebtoken");
 const JWT_SECRECT = "Aditya";
 
 const login = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    let user = await User.findOne({ email: req.body.email });
-    const match = await bcrypt.compare(password, user.password);
-    if (match) {
+  const { email, password } = req.body;
+    try {
+      let user = await User.findOne({ email });
+      if (!user) {
+        return res
+          .status(404)
+          .json({ errors: "Please try to login with correct Credential" });
+      }
+
+      const passwordCompare = await bcrypt.compare(password, user.password);
+      if (!passwordCompare) {
+        return res
+          .status(404)
+          .json({ errors: "Please try to login with correct Credential" });
+      }
       const data = {
         user: {
-          id: User.id,
+          id: user.id,
         },
       };
-      const token = jwt.sign(data, JWT_SECRECT);
-      res.json({ token }).status(200);
+      let userId = data.user.id;
+      const user1 = await User.findById(userId).select("-password");
+      const authtoken = jwt.sign(data, JWT_SECRECT);
+      // console.log(jwtData)
+      res.json({ authtoken,img:user1.img });
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).send("Enternal sever error");
     }
-    res.send("User not found").status(400);
-  } catch (error) {
-    console.log(error);
   }
-};
 
 module.exports = login;
