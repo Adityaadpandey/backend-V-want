@@ -9,11 +9,11 @@ var fetchUser = require("../middleware/fetchUser");
 // const jwt = require('jsonwebtoken')
 
 // requirement of the controllers
-const loged = require("../controller/users/signin");
-const login = require("../controller/users/login");
-const id = require("../controller/users/id");
-const forget = require("../controller/users/forgot");
-const newpass = require("../controller/users/n-password");
+const loged = require("../controller/auth/signin");
+const login = require("../controller/auth/login");
+const id = require("../controller/auth/id");
+const forget = require("../controller/auth/forgot");
+const newpass = require("../controller/auth/n-password");
 
 
 

@@ -32,7 +32,7 @@ const PostSchema = new Schema({
     },
     data: {
         type: "array",
-        required: true,
+        // required: true,
     },
     total: {
         type: Number,
